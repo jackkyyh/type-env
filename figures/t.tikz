@@ -1,0 +1,31 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style={red small (text)}] (0) at (0, 0) {$\alpha$};
+		\node [style=none] (1) at (1, 0.5) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0.5) {};
+		\node [style=none, rotate=90] (7) at (-0.75, 0) {$...$};
+		\node [style=none, rotate=90] (8) at (0.75, 0) {$...$};
+		\node [style=none] (9) at (-1.25, 0.5) {};
+		\node [style=none] (10) at (-1.25, -0.5) {};
+		\node [style=none] (11) at (-1.5, 0) {};
+		\node [style=none] (12) at (-1.75, 0) {\tiny$m$};
+		\node [style=none] (13) at (1.25, -0.5) {};
+		\node [style=none] (14) at (1.25, 0.5) {};
+		\node [style=none] (15) at (1.5, 0) {};
+		\node [style=none] (16) at (1.75, 0) {\tiny$n$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=none, in=-141, out=0, looseness=0.75] (3.center) to (0);
+		\draw [style=none, in=180, out=-39, looseness=0.75] (0) to (4.center);
+		\draw [style=none, in=180, out=39, looseness=0.75] (0) to (1.center);
+		\draw [style=none, in=141, out=0, looseness=0.75] (2.center) to (0);
+		\draw (9.center)
+			 to [in=30, out=180, looseness=0.75] (11.center)
+			 to [in=180, out=-30, looseness=0.75] (10.center);
+		\draw (13.center)
+			 to [in=-150, out=0, looseness=0.75] (15.center)
+			 to [in=0, out=150, looseness=0.75] (14.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
