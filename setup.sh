@@ -7,7 +7,9 @@ sudo apt install xauth -y
 wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 zcat < install-tl-unx.tar.gz | tar xf -
 cd install-tl-20*
-sudo perl install-tl --no-interaction --scheme=basic # 124
+
+# https://ctan.org/mirrors/mirmon
+sudo perl install-tl --no-interaction --scheme=basic --repository https://mirror-hk.koddos.net/CTAN/systems/texlive/tlnet # 124
 cd ../
 
 echo "export PATH=/usr/local/texlive/2023/bin/x86_64-linux:\$PATH" >> $RC_FILE
