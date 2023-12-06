@@ -9,12 +9,12 @@ zcat < install-tl-unx.tar.gz | tar xf -
 cd install-tl-20*
 
 # https://ctan.org/mirrors/mirmon
-sudo perl install-tl --no-interaction --scheme=basic --repository https://mirror-hk.koddos.net/CTAN/systems/texlive/tlnet # 124
+sudo perl install-tl --no-interaction --scheme=minimal --repository https://mirror-hk.koddos.net/CTAN/systems/texlive/tlnet # 124
 cd ../
 
 echo "export PATH=/usr/local/texlive/2023/bin/x86_64-linux:\$PATH" >> $RC_FILE
 
-sudo -E env "PATH=$PATH" tlmgr install pgf preview mathtools
+sudo -E /usr/local/texlive/2023/bin/x86_64-linux/tlmgr install pgf preview mathtools
 
 
 # TikZiT
