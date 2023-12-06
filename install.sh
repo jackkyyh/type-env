@@ -3,14 +3,15 @@ RC_FILE=~/.bashrc
 sudo apt update
 sudo apt install xauth -y
 
+mkdir tmp
+cd tmp
+
 # TeXLive
 wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 zcat < install-tl-unx.tar.gz | tar xf -
-cd install-tl-20*
 
 # https://ctan.org/mirrors/mirmon
-sudo perl install-tl --no-interaction --scheme=basic --repository https://mirror-hk.koddos.net/CTAN/systems/texlive/tlnet
-cd ../
+sudo perl install-tl-20*/install-tl --no-interaction --scheme=basic --repository https://mirror-hk.koddos.net/CTAN/systems/texlive/tlnet
 
 echo "export PATH=/usr/local/texlive/2023/bin/x86_64-linux:\$PATH" >> $RC_FILE
 
@@ -27,18 +28,19 @@ sudo apt install libgl1 libqt5core5a libqt5gui5 -y
 # But tikzit cannot not launch due to a Qt dependency problem.
 # sudo apt install tikzit
 
-sudo /usr/local/texlive/2023/bin/x86_64-linux/tlmgr install pgf preview mathtools
-wget https://tikzit.github.io/tikzit.sty
-
 # Typst
 mkdir ~/typst/
 wget https://github.com/typst/typst/releases/download/v0.10.0/typst-x86_64-unknown-linux-musl.tar.xz
 tar -xf typst-x86_64-unknown-linux-musl.tar.xz -C ~/typst/ --strip-components=1
 echo "export PATH=~/typst:\$PATH" >> $RC_FILE
 
+# Additional setup
+source $RC_FILE
+sudo tlmgr install pgf preview mathtools braket
+wget https://tikzit.github.io/tikzit.sty
 
 # Clean-up
-rm -rf install-tl-unx.tar.gz install-tl-20* tikzit-linux.tar.gz typst-x86_64-unknown-linux-musl.tar.xz
+cd ..
+rm -rf tmp
 
 
-source $RC_FILE
